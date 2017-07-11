@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="./jquery-ant-canvas-poker/jquery.ant.canvas.poker.js"></script>
+</head>
+<body>
+    <canvas id="canv" width="500" height="500" style="border:2px solid red;"></canvas>
+    <input type="button" id="toRight" value="横排"/>
+    <input type="button" id="toBottom" value="竖排" />
+    <input type="button" id="dispersale" value="分散" />
+    <input type="button" id="rotation" value="旋转" />
+    <script>
+        var testpoker = [
+        { name: 1, CardColor: "s" },
+        { name: 2, CardColor: "h" },
+        { name: "", CardColor: "" },
+        { name: "", CardColor: "" },
+        { name: "", CardColor: "" },
+        { name: 10, CardColor: "d" },
+        { name: "J", CardColor: "c" },
+        { name: "Q", CardColor: "s" },
+        { name: "A", CardColor: "s" },
+        { name: "X", CardColor: "y" },
+        { name: "XX", CardColor: "z" }
+        ];
+        function toRight() {
+            $("#canv").drawPoker({ direction: "toRight", pokers: testpoker });
+        }
+        function toBottom() {
+            $("#canv").drawPoker({ direction:"toBottom", pokers: testpoker,x:200 });
+        }
+        function dispersale() {
+            $("#canv").drawPoker({ direction: "toRight", pokers: testpoker, pokerHeight: 70, deg:0, pile: false, y:400 });
+        }
+        function rotation() {
+            $("#canv").drawPoker({ direction: "toRight", pokers: testpoker, pokerHeight:70, deg:60, pile:true,  y:300 });
+        }
+        $(function () {
+            $("#toRight").on("click", toRight);
+            $("#toBottom").on("click", toBottom);
+            $("#dispersale").on("click", dispersale);
+            $("#rotation").on("click", rotation);
+        })
+    </script>
+</body>
+</html>
